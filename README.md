@@ -9,3 +9,6 @@ git push origin main
 
 # useful Site
 https://www.atlassian.com/git/glossary
+
+# HTTP site that works with uni bullshit
+https://restninja.io/
