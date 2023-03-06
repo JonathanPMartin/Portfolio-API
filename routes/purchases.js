@@ -9,6 +9,7 @@ router.post('/',bodyParser(),auth, Add);
 router.get('/:id([0-9]{1,})',auth,GetByID);
 router.post('/:id([0-9]{1,})',auth,bodyParser(),Update);
 router.del('/:id([0-9]{1,})',auth,Delete)
+router.del('/port/:id([0-9]{1,})',auth,DeleteByPort)
 async function Add(ctx){
 	let body=ctx.request.body;
 	const user = ctx.state.user;
@@ -75,6 +76,21 @@ async function Delete(ctx){
 	const user = ctx.state.user;
 	if(userid==user.id || user.UserRole=='admin'){
 		var result=await model.deletePur(id)
+		ctx.body=result;
+		ctx.status=201;
+	}else{
+		ctx.status=401
+	}
+	
+}
+async function DeleteByPort(ctx){
+	let id = ctx.params.id;
+	let purchase=await model.GetById(id);
+	let portfolio=await model2.get(purchase[0].portid);
+	let userid=portfolio[0].UserId;
+	const user = ctx.state.user;
+	if(userid==user.id || user.UserRole=='admin'){
+		var result=await model.deletePurByPortId(id)
 		ctx.body=result;
 		ctx.status=201;
 	}else{
