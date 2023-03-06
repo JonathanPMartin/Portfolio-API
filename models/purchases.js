@@ -29,3 +29,10 @@ exports.UpdatePur=async function UpdatePur(currency,amount,DoP,id){
 	let data = await db.run_query(query, values);
   return data;
 }
+exports.GetById=async function GetById(id){
+	let query="select * from purchases where id =?";
+	let values=[id]
+	let data = await db.run_query(query, values);
+	return data;
+
+}

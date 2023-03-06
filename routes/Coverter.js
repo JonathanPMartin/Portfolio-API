@@ -15,7 +15,6 @@ router.post('/',bodyParser(),CurrentConvert)
 router.post('/Date',bodyParser(),HistoricConvert)
 router.post('/Change',bodyParser(),ChangeInValue)
 
-
 async function Test(ctx) {
 var tem = await Convert(15).from("USD").to("EUR");
 ctx.body = tem;

@@ -9,6 +9,7 @@ router.post('/:id([0-9]{1,})',bodyParser(),auth, Update);
 //bellow thing not reconising link ask sir on wensday prob easy fix
 router.post('/Owner:id([0-9]{1,})',bodyParser(),auth, UpdateOwner)
 router.get('/',auth,GetUserPorts)
+router.del('/:id([0-9]{1,})',auth,Delete)
 async function Add(ctx){
 	const user = ctx.state.user;
 	let body=ctx.request.body;
@@ -80,5 +81,19 @@ async function Update(ctx){
 		ctx.status=401
 	}
 
+}
+
+async function Delete(ctx){
+	let id = ctx.params.id;
+	let portfolio=await model.get(id);
+	let userid=portfolio[0].UserId;
+	const user = ctx.state.user;
+	if(userid==user.id || user.UserRole=='admin'){
+		var result=await model.deletePort(id)
+		ctx.body=result
+		ctx.status=201
+	}else{
+		ctx.status=401
+	}
 }
 module.exports = router;
