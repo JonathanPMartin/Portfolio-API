@@ -2,12 +2,15 @@ const Router = require('koa-router');
 const bodyParser = require('koa-bodyparser');
 const model = require('../models/users');
 const model2=require('../models/encrypt');
-const auth = require('koa-basic-auth');
+//const auth = require('koa-basic-auth');
+const auth = require('../controllers/auth');
 const clean=require('../controllers/clean')
 const router = Router({prefix: '/api/v1/User'});
 
 //router.post('/',bodyParser(), Login);
 router.post('/add',bodyParser(), Register);
+router.post('/update',bodyParser(),auth, Update);
+router.get('/',auth,Getall);
 /*
 async function Login(ctx) {
 	console.log('test')
@@ -41,5 +44,32 @@ async function Register(ctx){
 	ctx.status = 401;
 
 }
+}
+async function Update(ctx){
+	const user = ctx.state.user;
+	let body=ctx.request.body;
+	var data=body.UserId+String(body.UserRole)
+	let Isclean=await clean.clean(data);
+	if(Isclean){
+		if(user.UserRole=='admin'){
+			var result=await model.update(body.UserId,body.UserRole)
+			ctx.body=result;
+			ctx.status=201;
+		}else{
+				ctx.status=401;
+		}
+	}else{
+			ctx.status=401;
+	}
+}
+async function Getall(ctx){
+	const user = ctx.state.user;
+	if(user.UserRole=='admin'){
+		let result=await model.getAll()
+		ctx.body=result
+		ctx.status=201
+	}else{
+		ctx.status=401
+	}
 }
 module.exports = router;

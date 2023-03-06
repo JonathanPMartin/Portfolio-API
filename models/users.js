@@ -29,3 +29,20 @@ exports.addUser=async function addUser(username,password){
 	let data = await db.run_query(query, values);
   return data;
 } 
+exports.deleteUser=async function deleteUser(UserId){
+	let query="DELETE from users where id =?"
+	let values=[UserId]
+	let data = await db.run_query(query, values);
+  return data;
+}
+exports.update=async function update(role,id){
+	let query="update users set UserRole =? where id=?"
+	let values=[role,id]
+	let data = await db.run_query(query, values);
+  return data;
+}
+exports.getAll=async function getAll(){
+	let query="select * from users;"
+	let data = await db.run_query(query);
+  return data;
+}

@@ -1,7 +1,7 @@
 const Router = require('koa-router');
 const bodyParser = require('koa-bodyparser');
 const auth = require('../controllers/auth');
-const clean = require('../controllers/auth');
+const clean = require('../controllers/clean');
 const router = Router({prefix: '/api/v1'});
 console.log(router.name);
 router.get('/', publicAPI);
