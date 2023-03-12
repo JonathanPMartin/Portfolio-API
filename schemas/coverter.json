@@ -1,0 +1,133 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+
+    
+    "converter": {
+      "$id": "#converter",
+      "title": "Current converter of currencey",
+      "description": "Converts one currency to another",
+      "type": "object",
+      "properties": {
+        "Amount": {
+          "description": "Amount of Money being converted",
+          "type": "float",
+        },
+        "Cur1": {
+          "description": "3 Letter Idenifcation for currency being converted ",
+          "type": "string",
+        },
+				"Cur2":{
+					"description": "3 Letter Idenifcation for currency being converted to",
+          "type": "string",
+				}
+      }
+    },
+
+    
+    "converterHistoric": {
+      "$id": "#converterHistoric",
+      "title": "Historic converter of currencey",
+      "description": "Data visible to users and admins (excludes password).",
+      "type": "object",
+      "properties": {
+        "Amount": {
+          "description": "Amount of Money being converted",
+          "type": "float",
+        },
+        "Cur1": {
+          "description": "3 Letter Idenifcation for currency being converted ",
+          "type": "string",
+        },
+				"Cur2":{
+					"description": "3 Letter Idenifcation for currency being converted to",
+          "type": "string",
+				},
+				"Date":{
+					"description":"date for the conversion rate",
+					"type":"date"
+				}
+      }
+    },
+    "Change": {
+      "$id": "#Change",
+      "title": "Change in value",
+      "description": "Change in value relative to the base currency from set date",
+      "type": "object",
+      "properties": {
+        "Cur":{
+					"description": "3 Letter Idenifcation for currency",
+          "type": "string",
+				},
+				"Date":{
+					"description":"date for start of rate of change",
+					"type":"date"
+				}
+        
+      }
+    },
+    
+    
+    "Converted": {
+      "$id": "#Converted",
+      "title": "Return after convert",
+      "description": "Return Value of convert",
+      "type": "object",
+      "properties": {
+        "success": {
+          "description": "bool indicator of success",
+          "type": "boolean"
+        },
+        "query": {
+          "description": "the query used in the request",
+          "type": "object"
+        },
+				"info":{
+					"description": "holds the time stamp and conversion rate",
+					"type":"object"
+				},
+				"date":{
+					"description": "the date used in the request",
+					"type":"date"
+				},
+				"result":{
+					"description": "result of the conversion",
+					"type":"float"
+				}
+      }
+    },
+		"Changed":{
+			"$id": "#Changed",
+      "title": "change between currenceys",
+      "description": "Return Value of change",
+      "type": "object",
+			"properties": {
+				"success":{
+					"description": "bool indicator of success",
+					"type":"boolean"
+				},
+				"fluctuation":{
+					"description": "bool indicator of fluctuation",
+					"type":"boolean"
+				},
+				"start_date":{
+					"description": "start date of comparison",
+					"type":"date"
+				},
+				"end_date":{
+					"description": "end date of comparison",
+					"type":"date"
+				},
+				"base":{
+					"description": "base currency of comparison",
+					"type":"string"
+				},
+				"rates":{
+					"description": "object holding the rates of change between each currency",
+					"type":"object"
+				}
+			}
+
+		}
+  }
+}

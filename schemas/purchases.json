@@ -1,0 +1,110 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+
+    
+    "purchases": {
+      "$id": "#purchases",
+      "title": "adding a new purchase",
+      "description": "adds a new purchase",
+      "type": "object",
+      "properties": {
+        "currency": {
+          "description": "3 letter code for currencey",
+          "type": "string",
+        },
+        "amount": {
+          "description": "the amount of Money in the purchase",
+          "type": "float",
+        },
+				"DoP":{
+					"description": "Date of purchase",
+          "type": "date",
+				},
+				"portid":{
+					"description": "the port id the purchase belongs to",
+					"type":"integer"
+				}
+      }
+    },
+		"queryReturn":{
+			"$id": "#updated",
+      "title": "return of an update",
+      "description": "Return Value of an update",
+      "type": "object",
+			"properties": {
+				"fieldCount":{
+					"description": "fieldCounts affeted by query",
+					"type":"integer"
+				},
+				"affectedRows":{
+					"description": "number of affectedRows",
+					"type":"integer"
+				},
+				"insertId":{
+					"description": "id inserted if any",
+					"type":"integer"
+				},
+				"serverStatus":{
+					"description": "status code of the server",
+					"type":"integer"
+				},
+				"warningCount":{
+					"description": "amount of warnings",
+					"type":"integer"
+				},
+				"message":{
+					"description": "message shwon in dispaly",
+					"type":"string"
+				},
+				"protocol41":{
+					"description": "checks if protocol is in effect",
+					"type":"boolean"
+				},
+				"changedRows":{
+					"description": "roes changed",
+					"type":"integer"
+				}
+			}
+
+		},
+
+    
+    "update": {
+      "$id": "#update",
+      "title": "update purchase",
+      "description": "updates the purchase info",
+      "type": "object",
+      "properties": {
+        "currency": {
+          "description": "3 letter code for currencey",
+          "type": "string",
+        },
+        "amount": {
+          "description": "the amount of Money in the purchase",
+          "type": "float",
+        },
+				"DoP":{
+					"description": "Date of purchase",
+          "type": "date",
+				},
+				"portid":{
+					"description": "the port id the purchase belongs to",
+					"type":"integer"
+				}
+      }
+    },
+		"Returedpurch": {
+      "$id": "#Returedpurch",
+      "title": "the return of getports",
+      "description": "the return of getports",
+      "type": "object",
+      "properties": {
+        "List":{
+					"description": "the List it returns, has no name",
+          "type": "List",
+				}
+      }
+    }
+  }
+}

@@ -7,10 +7,11 @@ const auth = require('../controllers/auth');
 const clean=require('../controllers/clean')
 const router = Router({prefix: '/api/v1/User'});
 
-//router.post('/',bodyParser(), Login);
-router.post('/add',bodyParser(), Register);
-router.post('/update',bodyParser(),auth, Update);
+//router.post('/Login',bodyParser(), Login);
+router.post('/',bodyParser(), Register);
+router.put('/:id([0-9]{1,})',bodyParser(),auth, Update);
 router.get('/',auth,Getall);
+router.del('/:id([0-9]{1,})',auth,Delete)
 /*
 async function Login(ctx) {
 	console.log('test')
@@ -47,13 +48,15 @@ async function Register(ctx){
 }
 async function Update(ctx){
 	const user = ctx.state.user;
+	let id = ctx.params.id;
 	let body=ctx.request.body;
-	var data=body.UserId+String(body.UserRole)
+	var data=String(body.UserRole)
 	let Isclean=await clean.clean(data);
 	if(Isclean){
+		console.log('test')
 		if(user.UserRole=='admin'){
-			var result=await model.update(body.UserId,body.UserRole)
-			ctx.body=result;
+			var result=await model.update(id,body.UserRole)
+			ctx.body=true;
 			ctx.status=201;
 		}else{
 				ctx.status=401;
@@ -61,6 +64,17 @@ async function Update(ctx){
 	}else{
 			ctx.status=401;
 	}
+}
+async function Delete(ctx){
+	const user = ctx.state.user;
+	let id = ctx.params.id;
+	if(id==user.id || user.UserRole=='admin'){
+		var result=await model.deleteUser(id)
+		ctx.body=result
+	}else{
+		ctx.status=401
+	}
+
 }
 async function Getall(ctx){
 	const user = ctx.state.user;

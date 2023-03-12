@@ -1,0 +1,123 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+
+    
+    "portfolio": {
+      "$id": "#portfolio",
+      "title": "Create portfolio",
+      "description": "Creates a portfolio",
+      "type": "object",
+      "properties": {
+        "Name": {
+          "description": "Name of portfolio",
+          "type": "string",
+        },
+        "UserId": {
+          "description":"Userid of the user attempting to make a portfolio",
+          "type": "integer",
+        }
+      }
+    },
+
+    
+    "getport": {
+      "$id": "#getport",
+      "title": "get portfolio",
+      "description": "gets all the portfolios of the user",
+      "type": "object"
+    },
+
+    "Returedports": {
+      "$id": "#Returedports",
+      "title": "the return of getports",
+      "description": "the return of getports",
+      "type": "object",
+      "properties": {
+        "List":{
+					"description": "the List it returns, has no name",
+          "type": "List",
+				}
+      }
+    },
+    
+    
+    "updateName": {
+      "$id": "#updateName",
+      "title": "update the name of a portfolio",
+      "description": "updates the name of a portfolio",
+      "type": "object",
+      "properties": {
+        "Name": {
+          "description": "name of the portfolio",
+          "type": "string"
+        }
+      }
+    },
+		"queryReturn":{
+			"$id": "#updated",
+      "title": "return of an update",
+      "description": "Return Value of an update",
+      "type": "object",
+			"properties": {
+				"fieldCount":{
+					"description": "fieldCounts affeted by query",
+					"type":"integer"
+				},
+				"affectedRows":{
+					"description": "number of affectedRows",
+					"type":"integer"
+				},
+				"insertId":{
+					"description": "id inserted if any",
+					"type":"integer"
+				},
+				"serverStatus":{
+					"description": "status code of the server",
+					"type":"integer"
+				},
+				"warningCount":{
+					"description": "amount of warnings",
+					"type":"integer"
+				},
+				"message":{
+					"description": "message shwon in dispaly",
+					"type":"string"
+				},
+				"protocol41":{
+					"description": "checks if protocol is in effect",
+					"type":"boolean"
+				},
+				"changedRows":{
+					"description": "roes changed",
+					"type":"integer"
+				}
+			}
+
+		},
+		"updateOwner":{
+			"$id": "#updateOwner",
+      "title": "update the owner of a portfolio",
+      "description": "updates the name of a portfolio",
+      "type": "object",
+      "properties": {
+        "UserId": {
+          "description": "id of the new owner",
+          "type": "id"
+        }
+      }
+		},
+		"deletePort":{
+			"$id": "#deletePort",
+      "title": "delete port",
+      "description": "deletes port by portid",
+      "type": "object"
+		},
+		"deletePortByUserId":{
+			"$id": "#deletePortByUserId",
+      "title": "delete port",
+      "description": "deletes port by userid",
+      "type": "object"
+		}
+  }
+}

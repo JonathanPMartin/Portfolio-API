@@ -5,9 +5,9 @@ const auth = require('../controllers/auth');
 const router = Router({prefix: '/api/v1/portfolio'});
 const clean=require('../controllers/clean')
 router.post('/',bodyParser(),auth, Add);
-router.post('/:id([0-9]{1,})',bodyParser(),auth, Update);
+router.put('/:id([0-9]{1,})',bodyParser(),auth, Update);
 //bellow thing not reconising link ask sir on wensday prob easy fix
-router.post('/Owner/:id([0-9]{1,})',bodyParser(),auth, UpdateOwner)
+router.put('/Owner/:id([0-9]{1,})',bodyParser(),auth, UpdateOwner)
 router.get('/',auth,GetUserPorts)
 router.del('/:id([0-9]{1,})',auth,Delete)
 router.del('/user/:id([0-9]{1,})',auth,DeleteByUser)

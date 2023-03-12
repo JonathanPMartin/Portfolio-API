@@ -6,8 +6,8 @@ const router = Router({prefix: '/api/v1/purchases'});
 const auth = require('../controllers/auth');
 const clean=require('../controllers/clean')
 router.post('/',bodyParser(),auth, Add);
-router.get('/:id([0-9]{1,})',auth,GetByID);
-router.post('/:id([0-9]{1,})',auth,bodyParser(),Update);
+router.get('/port/:id([0-9]{1,})',auth,GetByID);
+router.put('/:id([0-9]{1,})',auth,bodyParser(),Update);
 router.del('/:id([0-9]{1,})',auth,Delete)
 router.del('/port/:id([0-9]{1,})',auth,DeleteByPort)
 async function Add(ctx){
