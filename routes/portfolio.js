@@ -88,6 +88,7 @@ async function Delete(ctx){
 	let id = ctx.params.id;
 	let portfolio=await model.get(id);
 	let userid=portfolio[0].UserId;
+	console.log(userid)
 	const user = ctx.state.user;
 	if(userid==user.id || user.UserRole=='admin'){
 		var result=await model.deletePort(id)

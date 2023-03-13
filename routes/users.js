@@ -71,6 +71,7 @@ async function Delete(ctx){
 	if(id==user.id || user.UserRole=='admin'){
 		var result=await model.deleteUser(id)
 		ctx.body=result
+		ctx.status=201;
 	}else{
 		ctx.status=401
 	}
