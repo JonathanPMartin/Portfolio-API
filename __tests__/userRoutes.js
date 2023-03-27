@@ -2,7 +2,7 @@ const request = require('supertest')
 const app = require('../app')
 const admin='Basic YWxpY2U1OlRlc3Q='
 const user='Basic YWxpY2UyOlRlc3Q='
-
+const wrongpass='Basic YWxpY2UyOlRlc3Qh'
 describe('Post new user', () => {
   it('should create a new user', async () => {
     const res = await request(app.callback())
@@ -20,8 +20,10 @@ describe('get all users', () => {
       .get('/api/v1/User')
       .set('Authorization', admin)
     expect(res.statusCode).toEqual(201)
+    expect(res.body).toBeInstanceOf(Array);
   })
 });
+
 describe('Update User', () => {
   it('should create a new user', async () => {
     const res = await request(app.callback())

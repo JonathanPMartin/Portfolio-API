@@ -48,6 +48,7 @@ describe('get purchases of port id', () => {
       .get('/api/v1/purchases/port/2')
 			.set('Authorization', user)
     expect(res.statusCode).toEqual(201)
+    expect(res.body).toBeInstanceOf(Array);
   })
 });
 describe('get purchases of port id', () => {
@@ -56,6 +57,7 @@ describe('get purchases of port id', () => {
       .get('/api/v1/purchases/port/2')
 			.set('Authorization', user)
     expect(res.statusCode).toEqual(201)
+    expect(res.body).toBeInstanceOf(Array);
   })
 });
 describe('delete purchase', () => {

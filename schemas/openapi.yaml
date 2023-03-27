@@ -87,7 +87,7 @@ paths:
               $ref: ./users.json#/definitions/userUpdate
       responses:
         '201':
-          description: Confirmation and return of new data.
+          description: Confirmation and return of query.
           content:
             application/json:
               schema:
@@ -114,7 +114,7 @@ paths:
           description: Not found
 
   /Coverter:
-    summary: Represents an individual user
+    summary: routes for converting between currencies
     description:
       convert between currencies
     post:
@@ -140,7 +140,7 @@ paths:
           description: not found
 	
   /Coverter/Date:
-    summary: Represents an individual user
+    summary: grabs convert by date
     description:
       convert between currencies by date
     post:

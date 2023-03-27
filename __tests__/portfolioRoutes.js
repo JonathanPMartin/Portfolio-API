@@ -43,6 +43,7 @@ describe('get user portfolios', () => {
       .get('/api/v1/portfolio')
 			.set('Authorization', user)
     expect(res.statusCode).toEqual(201)
+    expect(res.body).toBeInstanceOf(Array);
   })
 });
 describe('delete portfolio', () => {
