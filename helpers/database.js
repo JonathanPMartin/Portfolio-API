@@ -1,8 +1,21 @@
+/**
+ * A module to run SQL queries on MySQL on behalf of the API models.
+ * @module helpers/database
+ * @author Jonathan Martin
+ * @see models/* for the models that require this module
+ */
 const mysql = require('promise-mysql');  
 const info = require('../config');
 
 // define an async utility function to get a connection
 // run an SQL query then end the connection
+/**
+ * Run an SQL query against the DB, end the connection and return the result.
+ * @param {string} Query SQL query string in sqljs format
+ * @param {array|number|string} values The values to inject in to the query string.
+ * @returns {object} mysqljs results object containing indexable rows
+ * @throws {string} Database query string
+ */
 exports.run_query = async function run_query(query, values) {
   try {
     const connection = await mysql.createConnection(info.config);
