@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: models/portfolio</title>
+    <title>JSDoc: Module: models/purchases</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: models/portfolio</h1>
+    <h1 class="page-title">Module: models/purchases</h1>
 
     
 
@@ -34,7 +34,7 @@
     <div class="container-overview">
     
         
-            <div class="description">A module used for all calls to the table portfolio in the database
+            <div class="description">A module used for all calls to the table purchases in the database
 Uses setup in /helpers/database for this function</div>
         
 
@@ -77,7 +77,7 @@ Uses setup in /helpers/database for this function</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_portfolio.js.html">models/portfolio.js</a>, <a href="models_portfolio.js.html#line1">line 1</a>
+        <a href="models_purchases.js.html">models/purchases.js</a>, <a href="models_purchases.js.html#line1">line 1</a>
     </li></ul></dd>
     
 
@@ -123,7 +123,7 @@ Uses setup in /helpers/database for this function</div>
     
 
     
-    <h4 class="name" id=".add"><span class="type-signature">(static) </span>add<span class="signature">(Name, UserId)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    <h4 class="name" id=".GetById"><span class="type-signature">(static) </span>GetById<span class="signature">(id)</span><span class="type-signature"> &rarr; {object}</span></h4>
     
 
     
@@ -131,192 +131,7 @@ Uses setup in /helpers/database for this function</div>
 
 
 <div class="description">
-    adds a new portfolio to the database
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>Name</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Name of the portfolio</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>UserId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-|
-
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">userid of the owner of the portfolio</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_portfolio.js.html">models/portfolio.js</a>, <a href="models_portfolio.js.html#line15">line 15</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    object containing success message
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">object</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id=".deletePort"><span class="type-signature">(static) </span>deletePort<span class="signature">(id)</span><span class="type-signature"> &rarr; {object}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    deletes portfolio by id
+    gets purchases by id
 </div>
 
 
@@ -371,7 +186,7 @@ Uses setup in /helpers/database for this function</div>
 
             
 
-            <td class="description last">id of the portfolio</td>
+            <td class="description last">id of the purchase</td>
         </tr>
 
     
@@ -412,7 +227,7 @@ Uses setup in /helpers/database for this function</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_portfolio.js.html">models/portfolio.js</a>, <a href="models_portfolio.js.html#line48">line 48</a>
+        <a href="models_purchases.js.html">models/purchases.js</a>, <a href="models_purchases.js.html#line77">line 77</a>
     </li></ul></dd>
     
 
@@ -441,7 +256,7 @@ Uses setup in /helpers/database for this function</div>
 
         
 <div class="param-desc">
-    object containing success message
+    object of all purchases found
 </div>
 
 
@@ -470,7 +285,7 @@ Uses setup in /helpers/database for this function</div>
     
 
     
-    <h4 class="name" id=".deletePortByUserId"><span class="type-signature">(static) </span>deletePortByUserId<span class="signature">(userid)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    <h4 class="name" id=".UpdatePur"><span class="type-signature">(static) </span>UpdatePur<span class="signature">(currency, amount, DoP, id)</span><span class="type-signature"> &rarr; {object}</span></h4>
     
 
     
@@ -478,7 +293,7 @@ Uses setup in /helpers/database for this function</div>
 
 
 <div class="description">
-    deletes portfolio where UserId=userid
+    updates purchase
 </div>
 
 
@@ -514,15 +329,35 @@ Uses setup in /helpers/database for this function</div>
 
         <tr>
             
-                <td class="name"><code>userid</code></td>
+                <td class="name"><code>currency</code></td>
             
 
             <td class="type">
             
                 
 <span class="param-type">string</span>
-|
 
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">3 letter code for the currency</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>amount</code></td>
+            
+
+            <td class="type">
+            
+                
 <span class="param-type">number</span>
 
 
@@ -533,479 +368,22 @@ Uses setup in /helpers/database for this function</div>
 
             
 
-            <td class="description last">userid of the portfolio</td>
+            <td class="description last">the amount of currency being added</td>
         </tr>
 
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_portfolio.js.html">models/portfolio.js</a>, <a href="models_portfolio.js.html#line59">line 59</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    object containing success message
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">object</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id=".get"><span class="type-signature">(static) </span>get<span class="signature">(id)</span><span class="type-signature"> &rarr; {object}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    gets portfolio by id
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
     
 
         <tr>
             
-                <td class="name"><code>id</code></td>
+                <td class="name"><code>DoP</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">date</span>
 |
 
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">id of the portfolio</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_portfolio.js.html">models/portfolio.js</a>, <a href="models_portfolio.js.html#line26">line 26</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    portfolio where id = id
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">object</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id=".getbyUser"><span class="type-signature">(static) </span>getbyUser<span class="signature">(userid)</span><span class="type-signature"> &rarr; {object}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    gets portfolio by userid
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>userid</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-|
-
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">id of the user</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_portfolio.js.html">models/portfolio.js</a>, <a href="models_portfolio.js.html#line37">line 37</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    portfolio where UserId = userid
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">object</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id=".update"><span class="type-signature">(static) </span>update<span class="signature">(name, id)</span><span class="type-signature"> &rarr; {object}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    updates portfolio name
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>name</code></td>
-            
-
-            <td class="type">
-            
-                
 <span class="param-type">string</span>
 
 
@@ -1016,7 +394,7 @@ Uses setup in /helpers/database for this function</div>
 
             
 
-            <td class="description last">name of the portfolio</td>
+            <td class="description last">Date of Purchase</td>
         </tr>
 
     
@@ -1042,7 +420,7 @@ Uses setup in /helpers/database for this function</div>
 
             
 
-            <td class="description last">id of the portfolio</td>
+            <td class="description last">id of the purchase</td>
         </tr>
 
     
@@ -1083,7 +461,7 @@ Uses setup in /helpers/database for this function</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_portfolio.js.html">models/portfolio.js</a>, <a href="models_portfolio.js.html#line71">line 71</a>
+        <a href="models_purchases.js.html">models/purchases.js</a>, <a href="models_purchases.js.html#line66">line 66</a>
     </li></ul></dd>
     
 
@@ -1141,7 +519,7 @@ Uses setup in /helpers/database for this function</div>
     
 
     
-    <h4 class="name" id=".updateOwner"><span class="type-signature">(static) </span>updateOwner<span class="signature">(userid, id)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    <h4 class="name" id=".add"><span class="type-signature">(static) </span>add<span class="signature">(currency, amount, DoP, portid)</span><span class="type-signature"> &rarr; {object}</span></h4>
     
 
     
@@ -1149,7 +527,7 @@ Uses setup in /helpers/database for this function</div>
 
 
 <div class="description">
-    updates portfolio owner
+    adds a new purchases to the database
 </div>
 
 
@@ -1185,16 +563,13 @@ Uses setup in /helpers/database for this function</div>
 
         <tr>
             
-                <td class="name"><code>userid</code></td>
+                <td class="name"><code>currency</code></td>
             
 
             <td class="type">
             
                 
 <span class="param-type">string</span>
-|
-
-<span class="param-type">number</span>
 
 
             
@@ -1204,14 +579,63 @@ Uses setup in /helpers/database for this function</div>
 
             
 
-            <td class="description last">userid of the new owner</td>
+            <td class="description last">3 letter code for the currency</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>id</code></td>
+                <td class="name"><code>amount</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the amount of currency being added</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>DoP</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">date</span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Date of Purchase</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>portid</code></td>
             
 
             <td class="type">
@@ -1230,7 +654,7 @@ Uses setup in /helpers/database for this function</div>
 
             
 
-            <td class="description last">id of the portfolio</td>
+            <td class="description last">portid the purchase belongs to</td>
         </tr>
 
     
@@ -1271,7 +695,7 @@ Uses setup in /helpers/database for this function</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_portfolio.js.html">models/portfolio.js</a>, <a href="models_portfolio.js.html#line83">line 83</a>
+        <a href="models_purchases.js.html">models/purchases.js</a>, <a href="models_purchases.js.html#line19">line 19</a>
     </li></ul></dd>
     
 
@@ -1301,6 +725,492 @@ Uses setup in /helpers/database for this function</div>
         
 <div class="param-desc">
     object containing success message
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".deletePur"><span class="type-signature">(static) </span>deletePur<span class="signature">(PurId)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    deletes purchases by id
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>PurId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">id of the purchase</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_purchases.js.html">models/purchases.js</a>, <a href="models_purchases.js.html#line41">line 41</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    object containing success message
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".deletePurByPortId"><span class="type-signature">(static) </span>deletePurByPortId<span class="signature">(PortId)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    deletes purchases by PortId
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>PortId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">portid of the purchases</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_purchases.js.html">models/purchases.js</a>, <a href="models_purchases.js.html#line52">line 52</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    object containing success message
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".getbyportid"><span class="type-signature">(static) </span>getbyportid<span class="signature">(PortId)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    gets purchases by portid
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>PortId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">portid of the purchases</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_purchases.js.html">models/purchases.js</a>, <a href="models_purchases.js.html#line30">line 30</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    object of all purchases found
 </div>
 
 

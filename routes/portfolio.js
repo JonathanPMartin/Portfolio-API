@@ -37,7 +37,7 @@ async function GetUserPorts(ctx){
 	const user = ctx.state.user;
 	var body=await model.getbyUser(user.id);
 	ctx.body=body;
-	ctx.status=201;
+	ctx.status=200;
 
 }
 
@@ -52,7 +52,7 @@ async function UpdateOwner(ctx){
 		if (check[0].UserId==user.id || user.UserRole=='admin'){
 			var result =await model.updateOwner(body.UserId,id);
 			ctx.body=result;
-			ctx.status=201;
+			ctx.status=200;
 		}else{
 			ctx.status=401
 		}
@@ -74,7 +74,7 @@ async function Update(ctx){
 		if (check[0].UserId==user.id || user.UserRole=='admin'){
 			var result =await model.update(body.Name,id);
 			ctx.body=result;
-			ctx.status=201;
+			ctx.status=200;
 		}else{
 			ctx.status=401
 		}
@@ -93,7 +93,7 @@ async function Delete(ctx){
 	if(userid==user.id || user.UserRole=='admin'){
 		var result=await model.deletePort(id)
 		ctx.body=result
-		ctx.status=201
+		ctx.status=200
 	}else{
 		ctx.status=401
 	}
@@ -107,7 +107,7 @@ async function DeleteByUser(ctx){
 	if(id==user.id || user.UserRole=='admin'){
 			var result=await model.deletePortByUserId(id)
 			ctx.body=result
-		ctx.status=201
+		ctx.status=200
 	}else{
 		ctx.status=401
 	}

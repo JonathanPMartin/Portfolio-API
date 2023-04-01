@@ -6,7 +6,7 @@ Git Commands
 git add .
 git commit -m 'test'
 git push origin main
-
+source setup.sql;
 # useful Site
 https://www.atlassian.com/git/glossary
 

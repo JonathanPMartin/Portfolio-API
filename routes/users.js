@@ -57,7 +57,7 @@ async function Update(ctx){
 		if(user.UserRole=='admin'){
 			var result=await model.update(id,body.UserRole)
 			ctx.body=true;
-			ctx.status=201;
+			ctx.status=200;
 		}else{
 				ctx.status=401;
 		}
@@ -71,7 +71,7 @@ async function Delete(ctx){
 	if(id==user.id || user.UserRole=='admin'){
 		var result=await model.deleteUser(id)
 		ctx.body=result
-		ctx.status=201;
+		ctx.status=200;
 	}else{
 		ctx.status=401
 	}
@@ -82,7 +82,7 @@ async function Getall(ctx){
 	if(user.UserRole=='admin'){
 		let result=await model.getAll()
 		ctx.body=result
-		ctx.status=201
+		ctx.status=200
 	}else{
 		ctx.status=401
 	}

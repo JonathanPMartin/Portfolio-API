@@ -41,7 +41,7 @@ async function GetByID(ctx){
 	//console.log(user);
 	if(userid==user.id || user.UserRole=='admin'){
 		ctx.body=await model.getbyportid(portid)
-		ctx.status=201;
+		ctx.status=200;
 	}else{
 		ctx.status=401;
 	}
@@ -59,7 +59,7 @@ async function Update(ctx){
 		if(userid==user.id || user.UserRole=='admin'){
 			let result=await model.UpdatePur(body.currency,body.amount,body.DoP,id)
 			ctx.body=result
-			ctx.status=201
+			ctx.status=200
 		}else{
 			ctx.status=401;
 		}
@@ -77,7 +77,7 @@ async function Delete(ctx){
 	if(userid==user.id || user.UserRole=='admin'){
 		var result=await model.deletePur(id)
 		ctx.body=result;
-		ctx.status=201;
+		ctx.status=200;
 	}else{
 		ctx.status=401
 	}
@@ -92,7 +92,7 @@ async function DeleteByPort(ctx){
 	if(userid==user.id || user.UserRole=='admin'){
 		var result=await model.deletePurByPortId(id)
 		ctx.body=result;
-		ctx.status=201;
+		ctx.status=200;
 	}else{
 		ctx.status=401
 	}

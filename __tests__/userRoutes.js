@@ -2,7 +2,8 @@ const request = require('supertest')
 const app = require('../app')
 const admin='Basic YWxpY2U1OlRlc3Q='
 const user='Basic YWxpY2UyOlRlc3Q='
-const wrongpass='Basic YWxpY2UyOlRlc3Qh'
+const NotAuth='Basic RGF2ZTpUZXN0'
+const NotUser="NOT A USER";
 describe('Post new user', () => {
   it('should create a new user', async () => {
     const res = await request(app.callback())
@@ -19,11 +20,27 @@ describe('get all users', () => {
     const res = await request(app.callback())
       .get('/api/v1/User')
       .set('Authorization', admin)
-    expect(res.statusCode).toEqual(201)
+    expect(res.statusCode).toEqual(200)
     expect(res.body).toBeInstanceOf(Array);
   })
 });
-
+describe('Test Auth', () => {
+  it('should create a new user', async () => {
+    const res = await request(app.callback())
+      .get('/api/v1/User')
+      .set('Authorization', NotAuth)
+    expect(res.statusCode).toEqual(401)
+   
+  })
+});
+describe('Test user check', () => {
+  it('should create a new user', async () => {
+    const res = await request(app.callback())
+      .get('/api/v1/User')
+      .set('Authorization', NotUser)
+    expect(res.statusCode).toEqual(401)
+  })
+});
 describe('Update User', () => {
   it('should create a new user', async () => {
     const res = await request(app.callback())
@@ -32,7 +49,7 @@ describe('Update User', () => {
        UserRole:'admin'
       })
 			.set('Authorization', admin)
-    expect(res.statusCode).toEqual(201)
+    expect(res.statusCode).toEqual(200)
   })
 });
 describe('delete user', () => {
@@ -40,6 +57,6 @@ describe('delete user', () => {
     const res = await request(app.callback())
       .del('/api/v1/User/3')
 			.set('Authorization', admin)
-    expect(res.statusCode).toEqual(201)
+    expect(res.statusCode).toEqual(200)
   })
 });

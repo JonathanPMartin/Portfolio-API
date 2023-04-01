@@ -2,7 +2,8 @@ const request = require('supertest')
 const app = require('../app')
 const admin='Basic YWxpY2U1OlRlc3Q='
 const user='Basic YWxpY2UyOlRlc3Q='
-
+const NotAuth='Basic RGF2ZTpUZXN0'
+const NotUser="NOT A USER";
 describe('add a new purchase', () => {
   it('should add a new purchase', async () => {
     const res = await request(app.callback())
@@ -17,7 +18,34 @@ describe('add a new purchase', () => {
     expect(res.statusCode).toEqual(201)
   })
 });
-
+describe('Test Auth', () => {
+  it('should add a new purchase', async () => {
+    const res = await request(app.callback())
+      .post('/api/v1/purchases')
+      .send({
+        currency: 'GBP',
+        amount: '2050.4',
+				DoP:"2022-04-27",
+				 "portid":"2"
+      })
+			.set('Authorization', NotAuth)
+    expect(res.statusCode).toEqual(401)
+  })
+});
+describe('Test User Check', () => {
+  it('should add a new purchase', async () => {
+    const res = await request(app.callback())
+      .post('/api/v1/purchases')
+      .send({
+        currency: 'GBP',
+        amount: '2050.4',
+				DoP:"2022-04-27",
+				 "portid":"2"
+      })
+			.set('Authorization', NotUser)
+    expect(res.statusCode).toEqual(401)
+  })
+});
 describe('update purchase', () => {
   it('should update purchase', async () => {
     const res = await request(app.callback())
@@ -29,7 +57,7 @@ describe('update purchase', () => {
 				 "portid":"1"
       })
 			.set('Authorization', admin)
-    expect(res.statusCode).toEqual(201)
+    expect(res.statusCode).toEqual(200)
   })
 });
 
@@ -38,7 +66,7 @@ describe('get purchases of port id', () => {
     const res = await request(app.callback())
       .get('/api/v1/purchases/port/2')
 			.set('Authorization', user)
-    expect(res.statusCode).toEqual(201)
+    expect(res.statusCode).toEqual(200)
   })
 });
 
@@ -47,7 +75,7 @@ describe('get purchases of port id', () => {
     const res = await request(app.callback())
       .get('/api/v1/purchases/port/2')
 			.set('Authorization', user)
-    expect(res.statusCode).toEqual(201)
+    expect(res.statusCode).toEqual(200)
     expect(res.body).toBeInstanceOf(Array);
   })
 });
@@ -56,7 +84,7 @@ describe('get purchases of port id', () => {
     const res = await request(app.callback())
       .get('/api/v1/purchases/port/2')
 			.set('Authorization', user)
-    expect(res.statusCode).toEqual(201)
+    expect(res.statusCode).toEqual(200)
     expect(res.body).toBeInstanceOf(Array);
   })
 });
@@ -65,6 +93,6 @@ describe('delete purchase', () => {
     const res = await request(app.callback())
       .del('/api/v1/purchases/4')
 			.set('Authorization', user)
-    expect(res.statusCode).toEqual(201)
+    expect(res.statusCode).toEqual(200)
   })
 });

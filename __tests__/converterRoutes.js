@@ -10,6 +10,14 @@ test('Jest should use the test DB', ()=> {
 
 //un comment after all other routes are down
 /*
+describe('get current conversion in all currencies', () => {
+  it('get current conversion in all currencies', async () => {
+    const res = await request(app.callback())
+      .get('/api/v1/Coverter')
+    expect(res.statusCode).toEqual(200)
+    expect(res.body).toBeInstanceOf(Object);
+  })
+});
 describe('currency convert', () => {
   it('covert currencies at current value', async () => {
     const res = await request(app.callback())
