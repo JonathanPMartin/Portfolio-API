@@ -18,6 +18,15 @@ async function Add(ctx){
 	let Isclean=await clean.clean(data);
 	if(Isclean){
 	if(body.UserId==user.id || user.UserRole=='admin'){
+		let Norm=true;
+			if(typeof(body.UserId)!="number"){
+				Norm=false
+			}else if(typeof(body.Name)!="string"){
+				Norm=false
+			}
+			if(Norm){
+				
+			
 	let port=await model.add(body.Name,body.UserId)
 	//console.log(port);
 	if (port != null){
@@ -25,6 +34,10 @@ async function Add(ctx){
 		console.log(ctx.status)
 		ctx.status = 201;
 		console.log(ctx.status)
+	}
+	}else{
+		ctx.body ="One Or More inputs were in an unexpected type";
+		ctx.status=400;
 	}
 }else{
 	ctx.status=401;
@@ -50,9 +63,20 @@ async function UpdateOwner(ctx){
 	if(Isclean){
 		var check=await model.get(id);
 		if (check[0].UserId==user.id || user.UserRole=='admin'){
+			let Norm=true;
+			if(typeof(body.UserId)!="number"){
+				Norm=false
+			}else if(typeof(id)!="string"){
+				Norm=false
+			}
+			if (Norm){
 			var result =await model.updateOwner(body.UserId,id);
 			ctx.body=result;
 			ctx.status=200;
+			}else{
+			ctx.body ="One Or More inputs were in an unexpected type";
+			ctx.status=400;
+			}
 		}else{
 			ctx.status=401
 		}
@@ -72,9 +96,20 @@ async function Update(ctx){
 		var check=await model.get(id);
 		console.log(check);
 		if (check[0].UserId==user.id || user.UserRole=='admin'){
+			let Norm=true;
+			if(typeof(body.Name)!="string"){
+				Norm=false
+			}else if(typeof(id)!="string"){
+				Norm=false
+			}
+			if(Norm){
 			var result =await model.update(body.Name,id);
 			ctx.body=result;
 			ctx.status=200;
+		}else{
+			ctx.body ="One Or More inputs were in an unexpected type";
+			ctx.status=400;
+		}
 		}else{
 			ctx.status=401
 		}

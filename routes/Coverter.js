@@ -68,17 +68,49 @@ async function GBPCurentConvert(ctx){
 }
 async function CurrentConvert(ctx){
 	let body= ctx.request.body
-var query=`https://api.apilayer.com/exchangerates_data/convert?to=${body.Cur2}&from=${body.Cur1}&amount=${body.Amount}`
+	let check=true;
+	if(typeof(body.Cur1)!="string"){
+		check=false
+		console.log('Cur1')
+	}else if(typeof(body.Cur2)!="string"){
+		check=false
+		console.log('Cur2')
+	}else if(typeof(body.amount)!="number"){
+		check=false
+		console.log('Cur3')
+	}
+	console.log("TEST")
+if (check){
+var query=`https://api.apilayer.com/exchangerates_data/convert?to=${body.Cur2}&from=${body.Cur1}&amount=${body.amount}`
 var Return= await fetch(query, requestOptions) .then(response => response.text())
 	ctx.body = Return;
 	ctx.status=201;
+}else{
+	ctx.body ="One Or More inputs were in an unexpected type";
+	ctx.status=400;
+}
 }
 async function HistoricConvert(ctx){
 	let body= ctx.request.body
-	var query=`https://api.apilayer.com/exchangerates_data/convert?to=${body.Cur2}&from=${body.Cur1}&amount=${body.Amount}&date=${body.Date}`
-	var Return= await fetch(query, requestOptions) .then(response => response.text())
-	ctx.body = Return;
-	ctx.status=201;
+	let check=true;
+	if(typeof(body.Cur1)!="string"){
+		check=false
+	}else if(typeof(body.Cur2)!="string"){
+		check=false
+	}else if(typeof(body.amount)!="number"){
+		check=false
+	}else if(typeof(body.Date)!="string"){
+		check=false
+	}
+	if (check){
+		var query=`https://api.apilayer.com/exchangerates_data/convert?to=${body.Cur2}&from=${body.Cur1}&amount=${body.amount}&date=${body.Date}`
+		var Return= await fetch(query, requestOptions) .then(response => response.text())
+		ctx.body = Return;
+		ctx.status=201;
+	}else{
+		ctx.body ="One Or More inputs were in an unexpected type";
+		ctx.status=400;
+	}
 }
 async function ChangeInValue(ctx){
 	var today = new Date();
@@ -87,10 +119,21 @@ async function ChangeInValue(ctx){
 	var yyyy = today.getFullYear();
 	today=yyyy+"-"+mm+"-"+dd;
 	let body= ctx.request.body;
+		let check=true;
+	if(typeof(body.cur)!="string"){
+		check=false
+	}else if(typeof(body.date)!="string"){
+		check=false
+	}
+	if (check){
 	var query=`https://api.apilayer.com/exchangerates_data/fluctuation?start_date=${body.date}&end_date=${today}&base=${body.cur}`
 	var Return= await fetch(query, requestOptions) .then(response => response.text())
 	ctx.body = Return;
 	ctx.status=201;
+	}else{
+		ctx.body ="One Or More inputs were in an unexpected type";
+		ctx.status=400;
+	}
 }
 /*
 fetch("https://api.apilayer.com/exchangerates_data/2020-04-12?symbols=GBP&base=EUR", requestOptions)

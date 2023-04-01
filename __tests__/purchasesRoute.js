@@ -10,12 +10,40 @@ describe('add a new purchase', () => {
       .post('/api/v1/purchases')
       .send({
         currency: 'GBP',
-        amount: '2050.4',
+        amount: 2050.4,
 				DoP:"2022-04-27",
-				 "portid":"2"
+				 "portid":2
       })
 			.set('Authorization', user)
     expect(res.statusCode).toEqual(201)
+  })
+});
+describe('Test Cleaning', () => {
+  it('should not add a new purchase', async () => {
+    const res = await request(app.callback())
+      .post('/api/v1/purchases')
+      .send({
+        currency: 'GBP   ',
+        amount: 2050.4,
+				DoP:"2022-04-27",
+				 "portid":2
+      })
+			.set('Authorization', user)
+    expect(res.statusCode).toEqual(401)
+  })
+});
+describe('Test wrong data', () => {
+  it('should not add a new purchase', async () => {
+    const res = await request(app.callback())
+      .post('/api/v1/purchases')
+      .send({
+        currency: 3,
+        amount: 2050.4,
+				DoP:"2022-04-27",
+				 "portid":2
+      })
+			.set('Authorization', user)
+    expect(res.statusCode).toEqual(400)
   })
 });
 describe('Test Auth', () => {
@@ -24,9 +52,9 @@ describe('Test Auth', () => {
       .post('/api/v1/purchases')
       .send({
         currency: 'GBP',
-        amount: '2050.4',
+        amount: 2050.4,
 				DoP:"2022-04-27",
-				 "portid":"2"
+				 "portid":2
       })
 			.set('Authorization', NotAuth)
     expect(res.statusCode).toEqual(401)
@@ -38,7 +66,7 @@ describe('Test User Check', () => {
       .post('/api/v1/purchases')
       .send({
         currency: 'GBP',
-        amount: '2050.4',
+        amount: 2050.4,
 				DoP:"2022-04-27",
 				 "portid":"2"
       })
@@ -52,7 +80,7 @@ describe('update purchase', () => {
       .put('/api/v1/purchases/3')
       .send({
         currency: 'EUR',
-        amount: '2050.4',
+        amount: 2050.4,
 				DoP:"2022-04-27",
 				 "portid":"1"
       })

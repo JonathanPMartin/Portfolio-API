@@ -16,8 +16,32 @@ describe('Post new portfolio', () => {
     expect(res.statusCode).toEqual(201)
   })
 });
+describe('Test Cleaning', () => {
+  it('should not create a new portfolio', async () => {
+    const res = await request(app.callback())
+      .post('/api/v1/portfolio')
+      .send({
+        Name: 'portfolio  Name',
+        UserId:1
+      })
+			.set('Authorization', user)
+    expect(res.statusCode).toEqual(401)
+  })
+});
+describe('Test wrong data', () => {
+  it('should not create a new portfolio', async () => {
+    const res = await request(app.callback())
+      .post('/api/v1/portfolio')
+      .send({
+        Name: 4,
+        UserId:1
+      })
+			.set('Authorization', user)
+    expect(res.statusCode).toEqual(400)
+  })
+});
 describe('Test Auth', () => {
-  it('should create a new portfolio', async () => {
+  it('should not create a new portfolio', async () => {
     const res = await request(app.callback())
       .post('/api/v1/portfolio')
       .send({
@@ -29,7 +53,7 @@ describe('Test Auth', () => {
   })
 });
 describe('Test User Check', () => {
-  it('should create a new portfolio', async () => {
+  it('should not create a new portfolio', async () => {
     const res = await request(app.callback())
       .post('/api/v1/portfolio')
       .send({

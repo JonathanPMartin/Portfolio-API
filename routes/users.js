@@ -34,6 +34,15 @@ async function Register(ctx){
 	let data=body.username+body.password
 	let Isclean=await clean.clean(data);
 	if (Isclean){
+		let Norm=true;
+			if(typeof(body.username)!="string"){
+				Norm=false
+			}else if(typeof(body.password)!="string"){
+				Norm=false
+			}
+			if (Norm){
+
+			
 	let user=await model.addUser(body.username,body.password)
 	console.log(user);
 	if (user != null){
@@ -41,6 +50,10 @@ async function Register(ctx){
 		ctx.status = 201;
 		console.log(ctx.status)
 	}
+			}else{
+				ctx.body ="One Or More inputs were in an unexpected type";
+				ctx.status=400;
+			}
 }else{
 	ctx.status = 401;
 

@@ -15,6 +15,28 @@ describe('Post new user', () => {
     expect(res.statusCode).toEqual(201)
   })
 });
+describe('Test Clean', () => {
+  it('should not create a new user', async () => {
+    const res = await request(app.callback())
+      .post('/api/v1/User')
+      .send({
+        username: 'unique_112233   ',
+        password: 'password'
+      })
+    expect(res.statusCode).toEqual(401)
+  })
+});
+describe('Test wrong data', () => {
+  it('should not create a new user', async () => {
+    const res = await request(app.callback())
+      .post('/api/v1/User')
+      .send({
+        username: 3,
+        password: 'password'
+      })
+    expect(res.statusCode).toEqual(400)
+  })
+});
 describe('get all users', () => {
   it('should create a new user', async () => {
     const res = await request(app.callback())

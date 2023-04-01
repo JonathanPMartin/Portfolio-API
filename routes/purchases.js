@@ -19,6 +19,17 @@ async function Add(ctx){
 	let portfolio=await model2.get(body.portid);
 	let userid=portfolio[0].UserId;
 	if(userid==user.id || user.UserRole=='admin'){
+			let Norm=true;
+			if(typeof(body.currency)!="string"){
+				Norm=false
+			}else if(typeof(body.portid)!="number"){
+				Norm=false
+			}else if(typeof(body.amount)!="number"){
+				Norm=false
+			}else if(typeof(body.DoP)!="string"){
+				Norm=false
+			}
+		if(Norm){
 	let purchase=await model.add(body.currency,body.amount,body.DoP,body.portid)
 	//console.log(user);
 	if (purchase != null){
@@ -26,6 +37,10 @@ async function Add(ctx){
 		ctx.status = 201;
 		console.log(ctx.status)
 	}
+		}else{
+				ctx.body ="One Or More inputs were in an unexpected type";
+			ctx.status=400;
+		}
 }else{
 	ctx.status = 401;
 }
@@ -57,9 +72,29 @@ async function Update(ctx){
 		let portfolio=await model2.get(body.portid);
 		let userid=portfolio[0].UserId;
 		if(userid==user.id || user.UserRole=='admin'){
+				let Norm=true;
+			if(typeof(body.currency)!="string"){
+				Norm=false
+				console.log('cur')
+			}else if(typeof(id)!="string"){
+				Norm=false
+				console.log('id')
+			}else if(typeof(body.amount)!="number"){
+				Norm=false
+				console.log('amount')
+			}else if(typeof(body.DoP)!="string"){
+				Norm=false
+				console.log('DoP')
+			}
+			if(Norm){
 			let result=await model.UpdatePur(body.currency,body.amount,body.DoP,id)
 			ctx.body=result
 			ctx.status=200
+			}
+			else{
+				ctx.body ="One Or More inputs were in an unexpected type";
+			ctx.status=400;
+			}
 		}else{
 			ctx.status=401;
 		}

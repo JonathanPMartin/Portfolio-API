@@ -7,7 +7,18 @@ const user='Basic YWxpY2UyOlRlc3Q='
 test('Jest should use the test DB', ()=> {
   expect(process.env.DB_DATABASE).toBe('test_db');
 })
-
+describe('test wrong data', () => {
+  it('throws an error cuz wrong data', async () => {
+    const res = await request(app.callback())
+      .post('/api/v1/Coverter')
+      .send({
+        Cur1: 'GBP',
+        Cur2: 20,
+				amount:2003.4
+      })
+    expect(res.statusCode).toEqual(400)
+  })
+});
 //un comment after all other routes are down
 /*
 describe('get current conversion in all currencies', () => {
@@ -18,6 +29,7 @@ describe('get current conversion in all currencies', () => {
     expect(res.body).toBeInstanceOf(Object);
   })
 });
+
 describe('currency convert', () => {
   it('covert currencies at current value', async () => {
     const res = await request(app.callback())
@@ -44,13 +56,14 @@ describe('currency convert 2', () => {
     expect(res.statusCode).toEqual(201)
   })
 });
+
 describe('currency rate of change', () => {
   it('covert currencies at Historic value', async () => {
     const res = await request(app.callback())
       .post('/api/v1/Coverter/Change')
       .send({
-        Cur: 'GBP',
-				Date:"2012-03-23"
+        cur: 'GBP',
+				date:"2012-03-23"
       })
     expect(res.statusCode).toEqual(201)
   })
