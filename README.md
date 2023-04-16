@@ -1,14 +1,8 @@
 # 6003CEM-Web-API
-personal 6003CEM Rep
-wah im smart
+API URl:https://stockocean-vistaaustin-3004.codio-box.uk/api/v1/
 
-Git Commands 
-git add .
-git commit -m 'test'
-git push origin main
-source setup.sql;
-# useful Site
-https://www.atlassian.com/git/glossary
+#Important Details
+the third party API uses a free trial with ~200 requests per month, it is possible that this has run out
 
-# HTTP site that works with uni bullshit
-https://restninja.io/
+the tables used in the database are relational so if you are testing the deleting routes be sure to delete any data it inherts from,
+the tables and their setup can be seen in the file setup.sql in the box
