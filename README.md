@@ -8,3 +8,4 @@ the tables used in the database are relational so if you are testing the deletin
 the tables and their setup can be seen in the file setup.sql in the box.
 
 testing uses npm test, if it takes more then a miniute, stop the tests and restart it, then they should all pass.
+do the same if the tests fail, this was most likely caused due to the tests running out of time.
