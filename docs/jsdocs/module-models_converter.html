@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: helpers/database</title>
+    <title>JSDoc: Module: models/converter</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: helpers/database</h1>
+    <h1 class="page-title">Module: models/converter</h1>
 
     
 
@@ -34,7 +34,7 @@
     <div class="container-overview">
     
         
-            <div class="description">A module to run SQL queries on MySQL on behalf of the API models.</div>
+            <div class="description">A module used for some converter routes</div>
         
 
         
@@ -76,19 +76,12 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="helpers_database.js.html">helpers/database.js</a>, <a href="helpers_database.js.html#line1">line 1</a>
+        <a href="models_Coverter.js.html">models/Coverter.js</a>, <a href="models_Coverter.js.html#line1">line 1</a>
     </li></ul></dd>
     
 
     
 
-    
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li>models/* for the models that require this module</li>
-        </ul>
-    </dd>
     
 
     
@@ -122,7 +115,7 @@
     
 
     
-    <h4 class="name" id=".run_query"><span class="type-signature">(static) </span>run_query<span class="signature">(Query, values)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    <h4 class="name" id=".add"><span class="type-signature">(static) </span>add<span class="signature">(currency, amount, currDate)</span><span class="type-signature"> &rarr; {object}</span></h4>
     
 
     
@@ -130,7 +123,7 @@
 
 
 <div class="description">
-    Run an SQL query against the DB, end the connection and return the result.
+    adds the rates of diffrent currenices to the database
 </div>
 
 
@@ -166,7 +159,7 @@
 
         <tr>
             
-                <td class="name"><code>Query</code></td>
+                <td class="name"><code>currency</code></td>
             
 
             <td class="type">
@@ -182,25 +175,42 @@
 
             
 
-            <td class="description last">SQL query string in sqljs format</td>
+            <td class="description last">currency 3 letter code</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>values</code></td>
+                <td class="name"><code>amount</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">array</span>
-|
-
 <span class="param-type">number</span>
-|
 
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">what it is worth in pounds</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>currDate</code></td>
+            
+
+            <td class="type">
+            
+                
 <span class="param-type">string</span>
 
 
@@ -211,7 +221,7 @@
 
             
 
-            <td class="description last">The values to inject in to the query string.</td>
+            <td class="description last">date of the convertsion</td>
         </tr>
 
     
@@ -252,7 +262,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="helpers_database.js.html">helpers/database.js</a>, <a href="helpers_database.js.html#line19">line 19</a>
+        <a href="models_Coverter.js.html">models/Coverter.js</a>, <a href="models_Coverter.js.html#line16">line 16</a>
     </li></ul></dd>
     
 
@@ -275,42 +285,172 @@
 
 
 
-<h5>Throws:</h5>
-
-        
-
-<dl>
-    <dt>
-        <div class="param-desc">
-        Database query string
-        </div>
-    </dt>
-    <dd></dd>
-    <dt>
-        <dl>
-            <dt>
-                Type
-            </dt>
-            <dd>
-                
-<span class="param-type">string</span>
-
-
-            </dd>
-        </dl>
-    </dt>
-    <dd></dd>
-</dl>
-
-
-    
 
 
 <h5>Returns:</h5>
 
         
 <div class="param-desc">
-    mysqljs results object containing indexable rows
+    object containing success message
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".get"><span class="type-signature">(static) </span>get<span class="signature">(currDate)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    gets currenices convertsion by date
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>currDate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">date of the convertsion</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_Coverter.js.html">models/Coverter.js</a>, <a href="models_Coverter.js.html#line27">line 27</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    object containing all currenices and their values in GBD on the date
 </div>
 
 

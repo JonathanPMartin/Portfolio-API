@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: helpers/database.js</title>
+    <title>JSDoc: Source: models/Coverter.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: helpers/database.js</h1>
+    <h1 class="page-title">Source: models/Coverter.js</h1>
 
     
 
@@ -27,38 +27,42 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * A module to run SQL queries on MySQL on behalf of the API models.
- * @module helpers/database
+ * A module used for some converter routes
+ * @module models/converter
  * @author Jonathan Martin
- * @see models/* for the models that require this module
  */
-const mysql = require('promise-mysql');  
-const info = require('../config');
 
-// define an async utility function to get a connection
-// run an SQL query then end the connection
+
+const db = require('../helpers/database');
 /**
- * Run an SQL query against the DB, end the connection and return the result.
- * @param {string} Query SQL query string in sqljs format
- * @param {array|number|string} values The values to inject in to the query string.
- * @returns {object} mysqljs results object containing indexable rows
- * @throws {string} Database query string
+ * adds the rates of diffrent currenices to the database
+ * @param {string} currency currency 3 letter code
+ * @param {number} amount what it is worth in pounds
+ * @param {string} currDate date of the convertsion
+ * @returns {object} object containing success message
  */
-exports.run_query = async function run_query(query, values) {
-  try {
-    const connection = await mysql.createConnection(info.config);
-    let data = await connection.query(query, values);
-    await connection.end();
-    return data;
-  } catch (error) {
-    // Don't let the actual error propagate up to the response object
-    // as it may contain sensitive server information.
-    // Instead log it somehow and throw a generic error.
-    console.error(error, query, values);
-    throw 'Database query error'
-  }
+exports.add=async function add(currency,amount,currDate){
+	let query="insert INTO GBPConvert(currency,amount,currDate) values(?,?,?)"
+	let values=[currency,amount,currDate];
+	let data = await db.run_query(query, values);
+  return data;
 }
-</code></pre>
+/**
+ * gets currenices convertsion by date
+ * @param {string} currDate date of the convertsion
+ * @returns {object} object containing all currenices and their values in GBD on the date
+ */
+exports.get=async function get(currDate){
+	let query="select * from GBPConvert where currDate=?"
+	let values=[currDate];
+	let data = await db.run_query(query, values);
+  return data;
+}
+/*
+currency varchar(255) NOT NULL,
+	amount float(255,2) NOT NULL,
+	currDate DATE not Null,
+*/</code></pre>
         </article>
     </section>
 
