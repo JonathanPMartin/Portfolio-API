@@ -37,6 +37,13 @@ describe('Test wrong data', () => {
     expect(res.statusCode).toEqual(400)
   })
 });
+describe('test wrong route', () => {
+  it('throws an error cuz wrong data', async () => {
+    const res = await request(app.callback())
+      .get('/api/v1/User/not')
+    expect(res.statusCode).toEqual(404)
+  })
+});
 describe('get all users', () => {
   it('should create a new user', async () => {
     const res = await request(app.callback())

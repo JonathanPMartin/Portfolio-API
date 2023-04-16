@@ -29,6 +29,7 @@
   "dependencies": {
     "@koa/cors": "^4.0.0",
     "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
     "easy-currencies": "^1.7.0",
     "jsonschema": "^1.4.1",
     "koa": "^2.14.1",

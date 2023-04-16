@@ -64,6 +64,13 @@ describe('Test User Check', () => {
     expect(res.statusCode).toEqual(401)
   })
 });
+describe('test wrong route', () => {
+  it('throws an error cuz wrong data', async () => {
+    const res = await request(app.callback())
+      .get('/api/v1/portfolio/not')
+    expect(res.statusCode).toEqual(404)
+  })
+});
 describe('update portfolio name', () => {
   it('should update the portfolio name', async () => {
     const res = await request(app.callback())
@@ -98,7 +105,7 @@ describe('get user portfolios', () => {
 describe('delete portfolio', () => {
   it('delete portfolio', async () => {
     const res = await request(app.callback())
-      .del('/api/v1/portfolio/3')
+      .del('/api/v1/portfolio/5')
 			.set('Authorization', user)
     expect(res.statusCode).toEqual(200)
   })

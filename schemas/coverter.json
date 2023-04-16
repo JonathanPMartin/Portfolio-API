@@ -23,6 +23,18 @@
 				}
       }
     },
+    "GBPConvert":{
+       "$id": "#GBPConvert",
+      "title": "current convert from GBP",
+      "description": "Converts from GBP",
+      "type": "object",
+      "properties": {
+        "list":{
+          "description": "list of all the currenceys value in pounds",
+          "type": "list",
+        }
+      }
+    },
 
     
     "converterHistoric": {

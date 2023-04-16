@@ -74,6 +74,13 @@ describe('Test User Check', () => {
     expect(res.statusCode).toEqual(401)
   })
 });
+describe('test wrong route', () => {
+  it('throws an error cuz wrong data', async () => {
+    const res = await request(app.callback())
+      .get('/api/v1/purchases/not')
+    expect(res.statusCode).toEqual(404)
+  })
+});
 describe('update purchase', () => {
   it('should update purchase', async () => {
     const res = await request(app.callback())

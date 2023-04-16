@@ -11,10 +11,10 @@ const portfolios=require('./routes/portfolio.js')
 const Coverter=require('./routes/Coverter.js')
 const purchases=require('./routes/purchases.js')
 //app.use(special.routes());
-app.use(users.routes());
-app.use(Coverter.routes())
-app.use(purchases.routes())
-app.use(portfolios.routes())
+app.use(users.routes(cors()));
+app.use(Coverter.routes(cors()))
+app.use(purchases.routes(cors()))
+app.use(portfolios.routes(cors()))
 module.exports = app;
 
 /*let port = process.env.PORT || 3004;

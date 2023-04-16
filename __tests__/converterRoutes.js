@@ -19,8 +19,20 @@ describe('test wrong data', () => {
     expect(res.statusCode).toEqual(400)
   })
 });
+describe('test wrong route', () => {
+  it('throws an error cuz wrong data', async () => {
+    const res = await request(app.callback())
+      .post('/api/v1/Coverter/not')
+      .send({
+        Cur1: 'GBP',
+        Cur2: 20,
+				amount:2003.4
+      })
+    expect(res.statusCode).toEqual(404)
+  })
+});
 //un comment after all other routes are down
-/*
+
 describe('get current conversion in all currencies', () => {
   it('get current conversion in all currencies', async () => {
     const res = await request(app.callback())
@@ -68,4 +80,3 @@ describe('currency rate of change', () => {
     expect(res.statusCode).toEqual(201)
   })
 });
-*/

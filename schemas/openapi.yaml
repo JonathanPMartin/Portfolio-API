@@ -21,6 +21,11 @@ tags:
     description: API endpoint for Portfolios of the user.
   - name: Purchases
     description: API endpoint for Purchases of the user.
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
 paths:
   /users:
     summary: Represents an individual user
@@ -33,6 +38,7 @@ paths:
         - Users
       description:
         Create a new user account.
+      
       requestBody:
         description: All new user data.
         required: true
@@ -47,11 +53,15 @@ paths:
             application/json:
               schema:
                 $ref: ./users.json#/definitions/userUpdated
+        '400':
+          description: data aint in the right type
     get:
       tags:
         - Users
       description:
         Get All Users.
+      security:
+        - BasicAuth : [username,password]
       responses:
         '201':
           description: View of user record
@@ -78,6 +88,8 @@ paths:
         - Users
       description:
         Update UserRole.
+      security:
+        - BasicAuth : [username,password]
       requestBody:
         description: Update a visible property or the password.
         required: true
@@ -96,11 +108,15 @@ paths:
           description: Not found
         '401':
           description: User is not an admin
+        '400':
+          description: data aint in the right type
     delete:
       tags:
         - Users
       description:
         Delete user by id.
+      security:
+        - BasicAuth : [username,password]
       responses:
         '201':
           description: Confirmation of deletion.
@@ -117,6 +133,20 @@ paths:
     summary: routes for converting between currencies
     description:
       convert between currencies
+    get:
+      tags:
+        - Coverter
+      description:
+       gets value of currencies in GBP
+      responses:
+        '201':
+          description: Confirmation and return of the query.
+          content:
+            application/json:
+              schema:
+                $ref: ./coverter.json#/definitions/GBPConvert
+        '404':
+          description: not found
     post:
       tags:
         - Coverter
@@ -138,6 +168,8 @@ paths:
                 $ref: ./coverter.json#/definitions/Converted
         '404':
           description: not found
+        '400':
+          description: data aint in the right type
 	
   /Coverter/Date:
     summary: grabs convert by date
@@ -164,6 +196,8 @@ paths:
                 $ref: ./coverter.json#/definitions/Converted
         '404':
           description: not found
+        '400':
+          description: data aint in the right type
 	
   /Coverter/Change:
     summary: Represents an individual user
@@ -190,6 +224,8 @@ paths:
                 $ref: ./coverter.json#/definitions/Changed
         '404':
           description: not found
+        '400':
+          description: data aint in the right type
   /portfolio:
     summary: Represents an individual user
     description:
@@ -199,6 +235,8 @@ paths:
         - Portfolio
       description:
        upload of new port
+      security:
+        - BasicAuth : [username,password]
       requestBody:
         description: contains name and userid.
         required: true
@@ -213,11 +251,15 @@ paths:
           description: not authenticated/authorised or data not cleaned
         '404':
           description: not found
+        '400':
+          description: data aint in the right type
     get:
       tags:
         - Portfolio
       description:
         portfolios of the users
+      security:
+        - BasicAuth : [username,password]
       responses:
         '201':
           description: Confirmation and return of the query.
@@ -233,11 +275,15 @@ paths:
     summary: Represents an individual user
     description:
       routes on the / command on portfolio
+    security:
+        - BasicAuth : [username,password]
     put:
       tags:
         - Portfolio
       description:
        update name of portfolio
+      security:
+        - BasicAuth : [username,password]
       requestBody:
         description: contains name and userid.
         required: true
@@ -256,11 +302,15 @@ paths:
           description: not authenticated/authorised or data not cleaned
         '404':
           description: not found
+        '400':
+          description: data aint in the right type
     delete:
       tags:
         - Portfolio
       description:
         portfolio by id
+      security:
+        - BasicAuth : [username,password]
       responses:
         '201':
           description: Confirmation and return of the query.
@@ -281,6 +331,8 @@ paths:
         - Portfolio
       description:
        update owner of portfolio
+      security:
+        - BasicAuth : [username,password]
       requestBody:
         description: contains name and userid.
         required: true
@@ -299,15 +351,21 @@ paths:
           description: not authenticated/authorised or data not cleaned
         '404':
           description: not found
+        '400':
+          description: data aint in the right type
   /portfolio/user/{id}:
     summary: Represents an individual user
     description:
       routes on the / command on portfolio
+    security:
+        - BasicAuth : [username,password]
     delete:
       tags:
         - Portfolio
       description:
         portfolio by user id
+      security:
+        - BasicAuth : [username,password]
       responses:
         '201':
           description: Confirmation and return of the query.
@@ -328,6 +386,8 @@ paths:
         - Purchases
       description:
         Add Purchase
+      security:
+        - BasicAuth : [username,password]
       responses:
         '201':
           description: Confirmation and return of the query.
@@ -349,6 +409,8 @@ paths:
         - Purchases
       description:
        update purchase info
+      security:
+        - BasicAuth : [username,password]
       requestBody:
         description: contains name and userid.
         required: true
@@ -367,11 +429,15 @@ paths:
           description: not authenticated/authorised or data not cleaned
         '404':
           description: not found
+        '400':
+          description: data aint in the right type
     delete:
       tags:
         - Purchases
       description:
         purchase by id
+      security:
+        - BasicAuth : [username,password]
       responses:
         '201':
           description: Confirmation and return of the query.
@@ -387,11 +453,15 @@ paths:
     summary: Represents an individual user
     description:
       routes on the / command on portfolio
+    security:
+        - BasicAuth : [username,password]
     get:
       tags:
         - Purchases
       description:
        purchases by port id
+      security:
+        - BasicAuth : [username,password]
       requestBody:
         description: contains name and userid.
         required: true
@@ -411,6 +481,8 @@ paths:
         - Purchases
       description:
         purchases by port id
+      security:
+        - BasicAuth : [username,password]
       responses:
         '201':
           description: Confirmation and return of the query.
